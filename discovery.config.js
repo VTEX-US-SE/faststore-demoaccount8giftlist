@@ -1,22 +1,23 @@
+
 module.exports = {
   seo: {
-    title: "FastStore",
-    description: "A fast and performant store framework",
-    titleTemplate: "%s | FastStore",
-    author: "FastStore",
-  },
+  "title": "FastStore",
+  "description": "A fast and performant store framework",
+  "titleTemplate": "%s | FastStore",
+  "author": "FastStore"
+},
 
   // Theming
-  theme: "custom-theme",
+  theme: 'custom-theme',
 
   // Ecommerce Platform
-  platform: "vtex",
+  platform: 'vtex',
 
   // Platform specific configs for API
   api: {
-    storeId: "newstore",
-    workspace: "master",
-    environment: "vtexcommercestable",
+    storeId: "demoaccount8giftlist",
+    workspace: 'master',
+    environment: 'vtexcommercestable',
     hideUnavailableItems: true,
     incrementAddress: false,
   },
@@ -24,12 +25,12 @@ module.exports = {
   // Default session
   session: {
     currency: {
-      code: "BRL",
-      symbol: "R$",
+      code: "USD",
+      symbol: "$",
     },
-    locale: "pt-BR",
-    channel: '{"salesChannel":"1","regionId":""}',
-    country: "BRA",
+    locale: "en-US",
+    channel: '{"salesChannel":1,"regionId":""}',
+    country: "USA",
     deliveryMode: null,
     addressType: null,
     postalCode: null,
@@ -38,61 +39,61 @@ module.exports = {
   },
 
   cart: {
-    id: "",
+    id: '',
     items: [],
     messages: [],
     shouldSplitItem: true,
   },
 
   // Production URLs
-  storeUrl: "https://www.fast.store",
-  secureSubdomain: "https://www.fast.store/",
-  checkoutUrl: "https://www.fast.store/checkout",
-  loginUrl: "https://www.fast.store/api/io/login",
-  accountUrl: "https://www.fast.store/api/io/account",
+  storeUrl: "https://demoaccount8giftlist.vtex.app",
+  secureSubdomain: "https://secure.vtexfaststore.com/",
+  checkoutUrl: "https://secure.vtexfaststore.com/checkout",
+  loginUrl: "https://secure.vtexfaststore.com/api/io/login",
+  accountUrl: "https://secure.vtexfaststore.com/api/io/account",
 
   previewRedirects: {
-    home: "/",
-    plp: "/headphones",
-    search: "/s?q=Newstore",
-    pdp: "/headphone-white-10000006/p",
+    home: '/',
+    plp: "/home",
+    search: "/s?q=Bouclair",
+    pdp: "/fabric-and-natural-wood-stool/p",
   },
 
   // Lighthouse CI
   lighthouse: {
-    server: process.env.BASE_SITE_URL || "http://localhost:3000",
+    server: process.env.BASE_SITE_URL || 'http://localhost:3000',
     pages: {
-      home: "/",
-      pdp: "/headphone-white-10000006/p",
-      collection: "/headphones",
+      home: '/',
+      pdp: "/fabric-and-natural-wood-stool/p",
+      collection: "/home",
     },
   },
 
   // E2E CI
   cypress: {
     pages: {
-      home: "/",
-      pdp: "/headphone-white-10000006/p",
-      collection: "/headphones",
-      collection_filtered:
-        "/headphones?category-1=headphones&fuzzy=0&operator=and&facets=category-1%2Cfuzzy%2Coperator&sort=score_desc&page=0",
-      search: "/s?q=Newstore",
+      home: '/',
+      pdp: "/fabric-and-natural-wood-stool/p",
+      collection: "/home",
+      collection_filtered: "/home/?category-1=home&brand=Bouclair&facets=category-1%2Cbrand%27",
+      search: "/s?q=Bouclair",
     },
-    browser: "electron",
+    browser: 'electron',
   },
 
   analytics: {
     // https://developers.google.com/tag-platform/tag-manager/web#standard_web_page_installation,
-    gtmContainerId: "GTM-1234567",
+    gtmContainerId: "",
   },
 
   experimental: {
     nodeVersion: 18,
     cypressVersion: 12,
-    enableFaststoreMyAccount: false,
   },
 
   vtexHeadlessCms: {
-    webhookUrls: ["https://newstore.myvtex.com/cms-releases/webhook-releases"],
+    webhookUrls: [
+      "https://demoaccount8giftlist.myvtex.com/cms-releases/webhook-releases",
+    ],
   },
-};
+}
