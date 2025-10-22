@@ -47,7 +47,7 @@ module.exports = {
 
   // Production URLs
   storeUrl: "https://demo8new.demoaccount19.com",
-  secureSubdomain: "https://demo8new.demoaccount19.com,
+  secureSubdomain: "https://demo8new.demoaccount19.com",
   checkoutUrl: "https://demo8new.demoaccount19.com/checkout",
   loginUrl: "https://demo8new.demoaccount19.com/api/io/login",
   accountUrl: "https://demo8new.demoaccount19.com/api/io/account",
