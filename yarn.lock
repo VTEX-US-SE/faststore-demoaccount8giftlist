@@ -1281,6 +1281,16 @@
     idb-keyval "^5.1.3"
     zustand "^5.0.5"
 
+"@faststore/sdk@^3.95.0":
+  version "3.95.0"
+  resolved "https://registry.yarnpkg.com/@faststore/sdk/-/sdk-3.95.0.tgz#ec210393aa974c908de9e6733ac32db3ed0ddbb7"
+  integrity sha512-/m6sQJ0jIEsGb1UNdwzuYJfFCpTdLnvpWLOe9lwSLj4K4gMWIs4q6FcWps+5c3NtzYYbwMXMjc1XxJ5XjrYeRg==
+  dependencies:
+    "@types/react" "^18.2.42"
+    fast-deep-equal "^3.1.3"
+    idb-keyval "^5.1.3"
+    zustand "^5.0.5"
+
 "@faststore/ui@^3.89.2":
   version "3.89.2"
   resolved "https://registry.yarnpkg.com/@faststore/ui/-/ui-3.89.2.tgz#43458352adf34d0f1aadb61f599718c1d1b9a517"
