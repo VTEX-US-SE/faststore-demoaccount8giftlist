@@ -96,4 +96,8 @@ module.exports = {
       "https://demoaccount8giftlist.myvtex.com/cms-releases/webhook-releases",
     ],
   },
-}
+
+  contentSource: {
+    type: 'CP',
+  },
+};
