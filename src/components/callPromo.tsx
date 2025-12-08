@@ -19,8 +19,8 @@ export function callPromo() {
     if (sig === last.current) return
     last.current = sig
 
-    const ORDERFORM_URL = "https://promo--demoaccount8giftlist.myvtex.com/_v/orderform"
-    const PROMO_URL = "https://promo--demoaccount8giftlist.myvtex.com/_v/promotions"
+    const ORDERFORM_URL = "https://promo--demoaccount8.myvtex.com/_v/orderform"
+    const PROMO_URL = "https://promo--demoaccount8.myvtex.com/_v/promotions"
 
     const run = async () => {
       console.log("CART UPDATE ✅", { id, items })
