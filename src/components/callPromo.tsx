@@ -2,46 +2,67 @@
 
 import { useEffect, useRef } from "react"
 import { useCart_unstable as useCart } from "@faststore/core/experimental"
+import { cartStore_unstable as cartStore } from "@faststore/core/experimental"
 
 export function callPromo() {
-  const { id, items } = useCart() as any
+  const { id, items, isValidating } = useCart() as any
   const last = useRef("")
 
-  useEffect(() => {
-    if (!id) return
+  const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms))
 
-    // ✅ "get the updates": run whenever cart changes
-    const sig = `${id}::${(items ?? [])
+  const cartSig = (orderFormId: string, cartItems: any[]) =>
+    `${orderFormId}::${(cartItems ?? [])
       .map((i: any) => `${i.itemOffered?.sku ?? i.id}:${i.quantity}`)
       .sort()
       .join("|")}`
 
-    if (sig === last.current) return
-    last.current = sig
+  const orderFormSig = (of: any) =>
+    `${of?.orderFormId ?? ""}::${(of?.items ?? [])
+      .map((i: any) => `${i.id}:${i.quantity}`)
+      .sort()
+      .join("|")}`
 
-    const ORDERFORM_URL = "https://promo--demoaccount8giftlist.myvtex.com/_v/orderform"
-    const PROMO_URL = "https://promo--demoaccount8giftlist.myvtex.com/_v/promotions"
+  useEffect(() => {
+    if (!id) return
+    if (isValidating) return // ✅ wait for it to flip to false
+
+    const desiredSig = cartSig(id, items ?? [])
+    if (desiredSig === last.current) return
+    last.current = desiredSig
+
+    const ORDERFORM_URL = "https://demoaccount8.myvtex.com/_v/orderform"
+    const PROMO_URL = "https://demoaccount8.myvtex.com/_v/promotions"
 
     const run = async () => {
-      console.log("CART UPDATE ✅", { id, items })
+      // ✅ fetch OF and retry until it reflects cart
+      const delays = [0, 200, 500, 900]
+      let orderForm: any = null
 
-      // 1) get orderForm
-      const ofRes = await fetch(ORDERFORM_URL, {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({ orderFormId: id }),
-      })
+      for (const d of delays) {
+        if (d) await sleep(d)
 
-      if (!ofRes.ok) {
-        console.log("ORDERFORM FAILED ❌", ofRes.status, await ofRes.text())
-        return
+        const ofRes = await fetch(ORDERFORM_URL, {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({ orderFormId: id }),
+        })
+
+        if (!ofRes.ok) {
+          console.log("ORDERFORM FAILED ❌", ofRes.status, await ofRes.text())
+          continue
+        }
+
+        const data = await ofRes.json()
+        orderForm = data?.orderForm ?? data
+
+        console.log(orderForm)
+        console.log(desiredSig)
+
+        if (orderFormSig(orderForm) === desiredSig) break
       }
 
-      const data = await ofRes.json()
-      const orderForm = data?.orderForm ?? data
-      console.log(orderForm)
+      if (!orderForm?.orderFormId) return
 
-      // 2) call promo with orderForm
       const promoRes = await fetch(PROMO_URL, {
         method: "POST",
         headers: { "content-type": "application/json" },
@@ -49,11 +70,13 @@ export function callPromo() {
       })
 
       console.log("PROMO STATUS ✅", promoRes.status)
+      const updatedCart = cartStore.read()
+      cartStore.set(updatedCart)
       if (!promoRes.ok) console.log(await promoRes.text())
     }
 
     run().catch((e) => console.log("FAILED ❌", e))
-  }, [id, items])
+  }, [id, items, isValidating])
 
   return null
 }
