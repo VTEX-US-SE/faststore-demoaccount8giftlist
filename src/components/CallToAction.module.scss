@@ -1,0 +1,14 @@
+.callToAction {
+  padding: var(--fs-spacing-5);
+  background-color: var(--fs-color-neutral-bkg);
+
+  /* nomenclatura: componentName__element--modifier */
+  &__title {
+    font-size: var(--fs-text-size-lead);
+    color: var(--fs-color-text);
+  }
+
+  &__button {
+    margin-top: var(--fs-spacing-3);
+  }
+}
