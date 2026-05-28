@@ -810,68 +810,13 @@
           "writeOnly": false
         },
         "sections": {
+          "$ref": "#/$defs/$ALLOW_ALL_COMPONENTS",
           "$singleton": false,
           "$abstract": false,
           "definitions": {},
           "$recursiveAnchor": false,
-          "items": {
-            "anyOf": [
-              {
-                "$ref": "#/components/Search"
-              },
-              {
-                "$ref": "#/components/Navbar"
-              },
-              {
-                "$ref": "#/components/Alert"
-              },
-              {
-                "$ref": "#/components/Footer"
-              },
-              {
-                "$ref": "#/components/BannerText"
-              },
-              {
-                "$ref": "#/components/Hero"
-              },
-              {
-                "$ref": "#/components/Incentives"
-              },
-              {
-                "$ref": "#/components/ProductShelf"
-              },
-              {
-                "$ref": "#/components/ProductTiles"
-              },
-              {
-                "$ref": "#/components/Newsletter"
-              },
-              {
-                "$ref": "#/components/Children"
-              },
-              {
-                "$ref": "#/components/BannerNewsletter"
-              },
-              {
-                "$ref": "#/components/CartSidebar"
-              },
-              {
-                "$ref": "#/components/RegionBar"
-              },
-              {
-                "$ref": "#/components/RegionModal"
-              },
-              {
-                "$ref": "#/components/RegionPopover"
-              },
-              {
-                "$ref": "#/components/EmptyState"
-              }
-            ]
-          },
           "uniqueItems": false,
           "required": [],
-          "type": "array",
           "deprecated": false,
           "readOnly": false,
           "writeOnly": false

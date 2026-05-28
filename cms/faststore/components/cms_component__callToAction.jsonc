@@ -1,0 +1,36 @@
+{
+  "$extends": [
+    "#/$defs/base-component"
+  ],
+  "$componentKey": "CallToAction",
+  "$componentTitle": "Call To Action",
+  "type": "object",
+  "required": [
+    "title",
+    "link"
+  ],
+  "properties": {
+    "title": {
+      "title": "Title",
+      "type": "string"
+    },
+    "link": {
+      "title": "Link Path",
+      "type": "object",
+      "required": [
+        "text",
+        "url"
+      ],
+      "properties": {
+        "text": {
+          "title": "Text",
+          "type": "string"
+        },
+        "url": {
+          "title": "URL",
+          "type": "string"
+        }
+      }
+    }
+  }
+}
