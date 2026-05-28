@@ -1,0 +1,19 @@
+.container {
+  background-color: var(--fs-color-main-2);
+  padding: var(--fs-spacing-4);
+  border-radius: var(--fs-border-radius);
+  text-align: center;
+}
+
+.title {
+  font-size: var(--fs-text-size-title-huge);
+  font-weight: var(--fs-text-weight-bold);
+  color: var(--fs-color-text-inverse);
+  margin-bottom: var(--fs-spacing-2);
+}
+
+.link {
+  color: var(--fs-color-text-inverse);
+  text-decoration: underline;
+  font-weight: var(--fs-text-weight-bold);
+}
