@@ -1,3 +1,3 @@
 import customNavbar from "./sections/customNavbar";
-
-export default { Navbar: customNavbar }
+import CallToAction from "./CallToAction";
+export  {CallToAction}
