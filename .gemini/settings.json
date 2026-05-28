@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "vtex-developer": {
+      "command": "node",
+      "args": ["C:/Users/wencel1/.npm-global/node_modules/@vtex/developer-mcp/dist/index.js"],
+      "env": {
+      }
+    }
+  }
+}
